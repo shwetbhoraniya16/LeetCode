@@ -1,30 +1,35 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
-    public boolean isIdentical(TreeNode left, TreeNode right) {
-
-        // Base case: both nodes are null
-        if (left == null && right == null) {
+    public boolean isIdentical(TreeNode left, TreeNode right){
+        if(left == null && right == null){
             return true;
-        }
-
-        // One node is null, but the other is not
-        if (left == null || right == null) {
+        } 
+        if(left == null || right == null){
             return false;
         }
-
-        // Check values and compare mirrored subtrees
-        if (left.val != right.val) {
+        if(left.val != right.val){
             return false;
         }
-
-        return isIdentical(left.left, right.right) &&
-               isIdentical(left.right, right.left);
+        return isIdentical(left.left, right.right) && isIdentical(left.right, right.left);
     }
-
     public boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return true;
+        if(root == null){
+            return true; 
         }
-
         return isIdentical(root.left, root.right);
     }
 }
