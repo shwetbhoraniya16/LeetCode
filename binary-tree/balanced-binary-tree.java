@@ -5,17 +5,15 @@ class Solution {
         }
         int leftht = height(root.left);
         int rightht = height(root.right);
+        if(leftht == -1 || rightht == -1){
+            return -1;
+        }
+        if(Math.abs(leftht - rightht) > 1){
+            return -1;
+        }
         return Math.max(leftht, rightht) + 1;
     }
     public boolean isBalanced(TreeNode root) {
-        if(root == null){
-            return true;
-        }
-        int leftheight = height(root.left);
-        int rightheight = height(root.right);
-        if(Math.abs(leftheight - rightheight) > 1){
-            return false;
-        }
-        return isBalanced(root.left) && isBalanced(root.right);
-    }
+        return height(root) != -1;
+}
 }
